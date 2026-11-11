@@ -64,13 +64,13 @@ EcoCollect follows a microservices architecture. Each business microservice has 
 
 | Microservice | Main Responsibilities | Database |
 |---|---|---|
-| Report Service | Manages environmental reports, incident descriptions, locations, and report statuses. | H2 |
-| Collection Service | Manages waste collection requests, schedules, agent assignments, and collection statuses. | H2 |
+| Report Service | Manages environmental reports, incident descriptions, locations, and report statuses. | MySQL |
+| Collection Service | Manages waste collection requests, schedules, agent assignments, and collection statuses. | MySQL |
 | Recycling Service | Manages recycling centers, accepted materials, and recycling information. | MySQL |
-| Campaign Service | Manages environmental campaigns, citizen participation, campaign activities, and objectives. | H2 |
-| Reward Service | Manages eco-points, rewards, badges, transactions, and leaderboards. | H2 |
+| Campaign Service | Manages environmental campaigns, citizen participation, campaign activities, and objectives. | MySQL |
+| Reward Service | Manages eco-points, rewards, badges, transactions, and leaderboards. | MySQL |
 | Impact Analytics Service | Collects and analyzes environmental data, statistics, and impact indicators. | MongoDB / PostgreSQL (to be confirmed) |
-| Common Microservice | Shared business functionality developed and maintained by the team. | To be defined |
+| Notification | Shared business functionality developed and maintained by the team. | To be defined |
 
 ### 6.2 Team Responsibilities
 
