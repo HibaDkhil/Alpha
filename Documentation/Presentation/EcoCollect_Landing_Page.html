@@ -330,6 +330,123 @@ dialog[open]{display:flex;flex-direction:column}
 .secsteps li:last-child{border:0}
 .secsteps li:before{content:counter(k);width:30px;height:30px;border-radius:50%;background:var(--green-d);color:#fff;display:grid;place-items:center;font:700 14px var(--body)}
 .secsteps small{display:block;color:var(--muted);font-size:14.5px;margin-top:2px}
+.tg{display:inline-block;margin-top:10px;font:700 12px var(--body);border-radius:999px;padding:3px 10px;background:var(--sun);color:var(--ink)}
+.tg.s{background:var(--mint);color:var(--green-d)}.tg.g{background:#ffffff33;color:#fff}
+.dom-h{color:#fff;margin-top:64px}.dom-p{color:#b9d9c8;max-width:680px;margin-bottom:22px}
+.dc{background:#ffffff14;border:1px solid #ffffff2b;border-radius:20px;padding:26px}
+.dc .tg{margin:0 0 14px;font-size:13px;padding:4px 12px}
+.dc h3{font-size:20px;margin-bottom:8px;color:#fff}.dc p{color:#b9d9c8;font-size:15.5px}
+.chips2{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:16px 0 0;padding:0}
+.chips2 li{font:600 14px var(--body);background:#ffffff1f;border-radius:999px;padding:5px 14px;color:#fff}
+.dc .v2{margin-top:14px;padding-top:12px;border-top:1px dashed #ffffff40;font-size:14.5px}.dc .v2 b{color:#fff}
+
+.hero{position:relative;overflow:hidden;padding-bottom:156px}
+.hero .wrap{position:relative;z-index:1}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-bg .fl{position:absolute;bottom:-50px;opacity:0;animation:rise var(--d) linear var(--t) infinite}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.32}85%{opacity:.32}100%{transform:translateY(-960px) rotate(300deg);opacity:0}}
+.hero-bg .ring{position:absolute;right:-140px;top:30px;width:560px;height:560px;color:#1b7a4b;opacity:.07;animation:spin 70s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-bg .city{position:absolute;left:0;bottom:50px;width:100%;height:90px}
+.hero-bg .road{position:absolute;left:0;right:0;bottom:40px;height:10px;background:#c3dccd}
+.hero-bg:after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:#e1efe7}
+.hero-bg .road:after{content:"";position:absolute;left:0;right:0;top:4px;height:2px;background:repeating-linear-gradient(90deg,#fff 0 18px,transparent 18px 38px)}
+.hero-bg .truck{position:absolute;left:0;bottom:47px;width:130px;animation:drive 26s linear infinite}
+@keyframes drive{from{transform:translateX(-170px)}to{transform:translateX(calc(100vw + 40px))}}
+.hero-bg .bob{animation:bob .5s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-1.6px)}}
+.hero-bg .wh{transform-box:fill-box;transform-origin:center;animation:spin .7s linear infinite}
+@media(prefers-reduced-motion:reduce){.hero-bg *{animation:none!important}.hero-bg .fl{display:none}.hero-bg .truck{transform:translateX(8vw)}}
+
+/* ===== interactive layer ===== */
+.btn{position:relative;overflow:hidden;transition:background .2s,color .2s,border-color .2s,translate .3s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.btn:hover{box-shadow:0 12px 24px -12px #0f4d30aa}
+.rip{position:absolute;width:140px;height:140px;margin:-70px 0 0 -70px;border-radius:50%;background:currentColor;opacity:.25;pointer-events:none;animation:rip .6s ease-out forwards}
+@keyframes rip{from{transform:scale(0)}to{transform:scale(2.6);opacity:0}}
+.bl{position:fixed;z-index:60;pointer-events:none;font-style:normal;font-size:18px;line-height:1}
+
+.tilt{position:relative;isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s,opacity .6s var(--dl,0s),translate .6s var(--dl,0s)}
+.tilt:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-4px);box-shadow:0 26px 44px -26px #0f4d3077;transition:transform .12s ease-out,box-shadow .3s,opacity .6s var(--dl,0s),translate .6s var(--dl,0s)}
+.tilt:before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),#1b7a4b26,transparent 70%)}
+.tilt:hover:before{opacity:1}
+
+.rv{opacity:0;translate:0 28px;transition:opacity .6s var(--dl,0s),translate .6s var(--dl,0s),transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.rv.in{opacity:1;translate:0 0}
+.bars.pre span{transform:scaleY(0)}
+.bars span{transform-origin:bottom;transition:transform .8s cubic-bezier(.2,.9,.3,1.2),translate .2s,filter .2s}
+.bars.pre.in span{transform:none}
+.bars span:hover{translate:0 -8px;filter:brightness(1.12)}
+
+@keyframes fin{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+.hero .wrap>div:first-child>*{animation:fin .7s cubic-bezier(.2,.8,.2,1) both}
+.hero .wrap>div:first-child>:nth-child(2){animation-delay:.1s}
+.hero .wrap>div:first-child>:nth-child(3){animation-delay:.2s}
+.hero .mock{animation:fin .9s .25s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 em{background-repeat:no-repeat;background-size:0 100%;animation:hl .9s .7s cubic-bezier(.3,.8,.3,1) forwards}
+@keyframes hl{to{background-size:100% 100%}}
+
+.mock .steps li{cursor:pointer;transition:translate .2s}
+.mock .steps li:hover{translate:5px 0}
+.mock .steps li:before{transition:background .3s,border-color .3s}
+.mock .steps li:not(:last-child):after{transition:background .4s}
+.mock .steps li.now:before{animation:ping 1.7s ease-out infinite}
+.mock .steps li.pop:before{animation:pop .45s cubic-bezier(.3,1.8,.5,1)}
+@keyframes ping{0%{box-shadow:0 0 0 0 #f4c94aaa}100%{box-shadow:0 0 0 12px #f4c94a00}}
+@keyframes pop{0%{transform:scale(.4)}100%{transform:scale(1)}}
+.mock .chip{display:inline-block;transition:background .3s,color .3s}
+.chip.ok{background:var(--green);color:#fff}
+.mock .hint{font-size:13px;margin:16px 0 0;opacity:.8}
+
+.links a{position:relative}
+.links a:after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;border-radius:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.links a:hover:after{transform:scaleX(1)}
+.logo i{transition:transform .35s cubic-bezier(.3,1.8,.5,1)}
+.logo:hover i{transform:rotate(-12deg) scale(1.12)}
+.flow div:before{transition:transform .35s cubic-bezier(.3,1.8,.5,1)}
+.flow div:hover:before{transform:scale(1.18) rotate(-10deg)}
+.flow div:hover h3{color:var(--sun)}
+.flow h3{transition:color .2s}
+.pills span{transition:transform .25s cubic-bezier(.3,1.8,.5,1),background .2s,border-color .2s;cursor:default}
+.pills span:hover{transform:translateY(-4px) rotate(-2deg);background:var(--mint);border-color:var(--green)}
+.tab{transition:transform .2s,background .2s,color .2s,border-color .2s}
+.tab:hover{transform:translateY(-2px);border-color:var(--green)}
+.tab:active{transform:scale(.95)}
+.panel li{transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s}
+.panel li:hover{transform:translateX(8px);background:var(--mint)}
+.facts div{transition:background .25s}
+.facts div:hover{background:var(--bg)}
+.signup input{transition:box-shadow .25s,transform .25s}
+.signup input:focus{outline:0;box-shadow:0 0 0 4px #f4c94a;transform:scale(1.02)}
+@media print,(prefers-reduced-motion:reduce){
+  .rv{opacity:1;translate:none;transition:none}
+  .hero .wrap>div:first-child>*,.hero .mock,.hero h1 em,.mock .steps li.now:before{animation:none}
+  .hero h1 em{background-size:100% 100%}
+  .bars.pre span{transform:none}
+  .tilt:hover{transform:none}
+}
+
+/* ===== matching section backgrounds ===== */
+section,.cta{position:relative;isolation:isolate;overflow:hidden;--cx:100%;--cy:0%;--rot:18deg}
+section:nth-of-type(even),.cta{--cx:0%;--cy:100%;--rot:-18deg}
+section:not(.how):before,.cta:before{content:"";position:absolute;inset:-24px;z-index:-1;pointer-events:none;
+  background:radial-gradient(560px circle at var(--cx) var(--cy),#cfeadccc,transparent 70%),radial-gradient(#1b7a4b3a 1.4px,transparent 1.8px) 0 0/24px 24px;
+  -webkit-mask-image:radial-gradient(800px circle at var(--cx) var(--cy),#000 20%,transparent 100%);mask-image:radial-gradient(800px circle at var(--cx) var(--cy),#000 20%,transparent 100%);
+  translate:calc(var(--px,0)*14px) calc(var(--py,0)*10px);transition:translate .6s ease-out}
+section:not(.how):after{content:"";position:absolute;z-index:-1;pointer-events:none;width:340px;height:340px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 10C170 50 190 120 100 190 10 120 30 50 100 10Z' fill='%231b7a4b'/%3E%3Cpath d='M100 30V190M100 80l30-22M100 110l-34-24M100 140l30-22' stroke='%23fff' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.07;
+  rotate:var(--rot);animation:sway 9s ease-in-out infinite alternate;
+  translate:calc(var(--px,0)*-22px) calc(var(--py,0)*-16px);transition:translate .6s ease-out;top:24px;right:-70px}
+section:not(.how):nth-of-type(even):after{top:auto;right:auto;bottom:24px;left:-70px}
+@keyframes sway{from{rotate:calc(var(--rot) - 7deg)}to{rotate:calc(var(--rot) + 7deg)}}
+
+section.how:before{content:"";position:absolute;inset:-24px;z-index:-1;pointer-events:none;
+  background:radial-gradient(620px circle at 8% 100%,#1b7a4b88,transparent 70%),radial-gradient(520px circle at 92% 0,#f4c94a26,transparent 70%),
+    repeating-radial-gradient(circle at 88% 18%,#ffffff0f 0 2px,transparent 2px 48px),radial-gradient(#ffffff14 1.3px,transparent 1.7px) 0 0/26px 26px;
+  translate:calc(var(--px,0)*14px) calc(var(--py,0)*10px);transition:translate .6s ease-out}
+section.how:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0h1440v14c-120 20-240 24-360 10S840 4 720 12 480 34 360 30 120 14 0 22z' fill='%23f2f7f3'/%3E%3C/svg%3E") top/100% 40px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40h1440V26c-120-20-240-24-360-10S840 36 720 28 480 6 360 10 120 26 0 18z' fill='%23f2f7f3'/%3E%3C/svg%3E") bottom/100% 40px no-repeat}
+.cta:before{--cx:0%;--cy:100%}
+@media(max-width:760px){section:not(.how):after{width:200px;height:200px}}
+@media print,(prefers-reduced-motion:reduce){section:not(.how):after{animation:none}section:before,section:after,.cta:before{translate:none;transition:none}}
 </style>
 </head>
 <body>
@@ -345,7 +462,7 @@ dialog[open]{display:flex;flex-direction:column}
       <a href="#security">Security</a>
       <a href="#contracts">Contracts</a>
       <a href="#team">Team</a>
-      <a href="#plan">Plan</a>
+      <a href="https://github.com/HibaDkhil/EcoCollect-4DASI2-Alpha/issues" target="_blank" rel="noopener">Plan</a>
     </nav>
     <a class="btn" href="#architecture">See the architecture</a>
   </div>
@@ -353,6 +470,14 @@ dialog[open]{display:flex;flex-direction:column}
 
 <main id="top">
 <div class="hero">
+<div class="hero-bg" aria-hidden="true"><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-leaf" viewBox="0 0 32 32"><path d="M3 29C3 13 12 3 29 3c0 17-9 26-26 26z" fill="currentColor"/></symbol>
+<symbol id="i-bottle" viewBox="0 0 32 36"><path d="M12 2h8v6l4 5v17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V13l4-5z" fill="currentColor"/></symbol>
+<symbol id="i-can" viewBox="0 0 32 36"><rect x="8" y="4" width="16" height="28" rx="3" fill="currentColor"/></symbol>
+<symbol id="i-box" viewBox="0 0 32 32"><path d="M3 9l13-6 13 6v14l-13 6-13-6z" fill="currentColor"/></symbol>
+<symbol id="i-cyc" viewBox="0 0 32 32"><path d="M16 4a12 12 0 1 1-11 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M1 5l5 8 8-4z" fill="currentColor"/></symbol></defs></svg><svg class="ring"><use href="#i-cyc"/></svg><svg class="fl" width="30" height="30" style="left:4%;--d:19s;--t:-0s;color:#1b7a4b"><use href="#i-leaf"/></svg><svg class="fl" width="36" height="36" style="left:14%;--d:23s;--t:-6s;color:#6fc096"><use href="#i-bottle"/></svg><svg class="fl" width="42" height="42" style="left:27%;--d:17s;--t:-3s;color:#1b7a4b"><use href="#i-cyc"/></svg><svg class="fl" width="30" height="30" style="left:41%;--d:26s;--t:-11s;color:#6fc096"><use href="#i-can"/></svg><svg class="fl" width="36" height="36" style="left:55%;--d:21s;--t:-2s;color:#f4c94a"><use href="#i-box"/></svg><svg class="fl" width="42" height="42" style="left:66%;--d:24s;--t:-9s;color:#6fc096"><use href="#i-leaf"/></svg><svg class="fl" width="30" height="30" style="left:78%;--d:20s;--t:-5s;color:#1b7a4b"><use href="#i-cyc"/></svg><svg class="fl" width="36" height="36" style="left:88%;--d:27s;--t:-13s;color:#f4c94a"><use href="#i-bottle"/></svg><svg class="fl" width="42" height="42" style="left:95%;--d:22s;--t:-8s;color:#1b7a4b"><use href="#i-can"/></svg><svg class="fl" width="30" height="30" style="left:34%;--d:29s;--t:-16s;color:#1b7a4b"><use href="#i-leaf"/></svg>
+<svg class="city" viewBox="0 0 1440 90" preserveAspectRatio="xMidYMax slice"><g fill="#e1efe7"><rect x="0" y="51" width="60" height="39" rx="3"/><rect x="70" y="57" width="81" height="33" rx="3"/><rect x="156" y="54" width="74" height="36" rx="3"/><rect x="239" y="57" width="77" height="33" rx="3"/><rect x="328" y="58" width="53" height="32" rx="3"/><rect x="386" y="34" width="67" height="56" rx="3"/><rect x="458" y="55" width="55" height="35" rx="3"/><rect x="525" y="57" width="67" height="33" rx="3"/><rect x="605" y="46" width="47" height="44" rx="3"/><rect x="666" y="23" width="80" height="67" rx="3"/><rect x="750" y="23" width="76" height="67" rx="3"/><rect x="836" y="46" width="43" height="44" rx="3"/><rect x="883" y="52" width="75" height="38" rx="3"/><rect x="966" y="51" width="66" height="39" rx="3"/><rect x="1044" y="24" width="47" height="66" rx="3"/><rect x="1099" y="49" width="75" height="41" rx="3"/><rect x="1179" y="24" width="77" height="66" rx="3"/><rect x="1270" y="37" width="52" height="53" rx="3"/><rect x="1327" y="56" width="75" height="34" rx="3"/><rect x="1415" y="21" width="43" height="69" rx="3"/></g><g fill="#d3e9dd"><rect x="0" y="53" width="71" height="37" rx="3"/><rect x="83" y="50" width="67" height="40" rx="3"/><rect x="159" y="56" width="69" height="34" rx="3"/><rect x="239" y="65" width="63" height="25" rx="3"/><rect x="309" y="69" width="90" height="21" rx="3"/><rect x="406" y="56" width="45" height="34" rx="3"/><rect x="459" y="59" width="73" height="31" rx="3"/><rect x="541" y="60" width="86" height="30" rx="3"/><rect x="635" y="72" width="78" height="18" rx="3"/><rect x="718" y="61" width="72" height="29" rx="3"/><rect x="796" y="64" width="88" height="26" rx="3"/><rect x="890" y="61" width="71" height="29" rx="3"/><rect x="965" y="72" width="82" height="18" rx="3"/><rect x="1059" y="49" width="76" height="41" rx="3"/><rect x="1144" y="52" width="61" height="38" rx="3"/><rect x="1214" y="59" width="78" height="31" rx="3"/><rect x="1305" y="72" width="69" height="18" rx="3"/><rect x="1379" y="59" width="57" height="31" rx="3"/></g><g transform="translate(90 90)"><rect x="-2" y="-16" width="4" height="16" fill="#b4d8c3"/><circle cx="0" cy="-24" r="11" fill="#a9d4bb"/></g><g transform="translate(330 90)"><rect x="-2" y="-16" width="4" height="16" fill="#b4d8c3"/><circle cx="0" cy="-24" r="9" fill="#a9d4bb"/></g><g transform="translate(610 90)"><rect x="-2" y="-16" width="4" height="16" fill="#b4d8c3"/><circle cx="0" cy="-24" r="12" fill="#a9d4bb"/></g><g transform="translate(905 90)"><rect x="-2" y="-16" width="4" height="16" fill="#b4d8c3"/><circle cx="0" cy="-24" r="10" fill="#a9d4bb"/></g><g transform="translate(1170 90)"><rect x="-2" y="-16" width="4" height="16" fill="#b4d8c3"/><circle cx="0" cy="-24" r="11" fill="#a9d4bb"/></g><g transform="translate(1390 90)"><rect x="-2" y="-16" width="4" height="16" fill="#b4d8c3"/><circle cx="0" cy="-24" r="9" fill="#a9d4bb"/></g></svg>
+<div class="road"></div><div class="truck"><svg viewBox="0 0 120 64" width="130" height="70"><g class="bob"><rect x="0" y="8" width="78" height="36" rx="6" fill="#0f4d30"/><rect x="0" y="36" width="78" height="8" fill="#1b7a4b"/><text x="39" y="31" text-anchor="middle" font-size="22" fill="#fff">♻</text><path d="M80 18h20l14 14v14H80z" fill="#f4c94a"/><path d="M88 23h10l8 9H88z" fill="#fff"/><rect x="0" y="44" width="120" height="6" fill="#0f2a22"/><g class="wh"><circle cx="22" cy="53" r="9" fill="#0f2a22"/><circle cx="22" cy="53" r="3.5" fill="#cfeadc"/><path d="M22 46v14M15 53h14" stroke="#cfeadc" stroke-width="1.5"/></g><g class="wh"><circle cx="96" cy="53" r="9" fill="#0f2a22"/><circle cx="96" cy="53" r="3.5" fill="#cfeadc"/><path d="M96 46v14M89 53h14" stroke="#cfeadc" stroke-width="1.5"/></g></g></svg></div></div>
   <div class="wrap">
     <div>
       <h1>Report waste. Track the cleanup. <em>See the impact.</em></h1>
@@ -361,7 +486,6 @@ dialog[open]{display:flex;flex-direction:column}
         <a class="btn" href="#architecture">See the architecture</a>
         <a class="btn ghost" href="#how">See how it works</a>
       </div>
-      <p class="proof">Built for cities, communities and the teams that keep them clean. Distributed Web Architecture project, Session 4 design milestone.</p>
     </div>
     <div class="mock" aria-label="Example of a report being tracked">
       <div class="mock-top"><b>Illegal dumping</b><span class="chip">In progress</span></div>
@@ -373,6 +497,7 @@ dialog[open]{display:flex;flex-direction:column}
         <li class="now">Collection assigned<span>Agent scheduled for pickup</span></li>
         <li class="todo">Recycled and counted</li>
       </ul>
+      <small class="hint">Try it: click a step to move the report along</small>
     </div>
   </div>
 </div>
@@ -384,33 +509,11 @@ dialog[open]{display:flex;flex-direction:column}
       <h2>Waste gets reported in one place and handled in another</h2>
       <p>EcoCollect closes that gap, so problems are visible from the first report to the final impact.</p>
     </div>
-    <div class="facts">
-      <div><b>Name</b><span>EcoCollect</span></div>
-      <div><b>Context</b><span>Community and municipal waste management</span></div>
-      <div><b>Users</b><span>Citizens, collection agents, recycling-center managers, administrators</span></div>
-      <div><b>Problem solved</b><span>No shared way to report, assign, track and measure waste actions</span></div>
-    </div>
     <div class="g4">
       <div class="c"><h3>Overflowing bins</h3><p>Citizens don't know where to report a full container, or whether anyone acted.</p></div>
       <div class="c"><h3>Illegal dumping</h3><p>Reports often lack a precise location, evidence or a clear follow-up.</p></div>
       <div class="c"><h3>Uncoordinated collection</h3><p>Field teams need assignment, scheduling and status tracking.</p></div>
       <div class="c"><h3>Hidden impact</h3><p>Without consolidated indicators, nobody can show what was collected or recycled.</p></div>
-    </div>
-  </div>
-</section>
-<section class="how" id="how">
-  <div class="wrap">
-    <div class="head">
-      <span class="part">1 · Priority scenario</span>
-      <h2>From first report to measured impact</h2>
-      <p>One connected workflow replaces scattered messages and phone calls.</p>
-    </div>
-    <div class="flow">
-      <div><h3>Report</h3><p>A citizen flags a problem with a category, description, location and photos.</p></div>
-      <div><h3>Review</h3><p>Administrators confirm the report and prioritize it.</p></div>
-      <div><h3>Collect</h3><p>Agents are assigned, schedule pickups and update the task status.</p></div>
-      <div><h3>Recycle</h3><p>Recycling centers record the materials and quantities they receive.</p></div>
-      <div><h3>Measure</h3><p>Dashboards update with waste collected, recycled and estimated CO₂ saved.</p></div>
     </div>
   </div>
 </section>
@@ -442,6 +545,29 @@ dialog[open]{display:flex;flex-direction:column}
     <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3">
       <div><h3>The full picture, at a glance</h3><p>Administrators oversee reports, teams and campaigns, and read the results in one dashboard.</p></div>
       <ul><li>Manage users and campaigns</li><li>Monitor reports and collections</li><li>Review environmental indicators</li><li>Oversee platform operations</li></ul>
+    </div>
+  </div>
+</section>
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="part">1 · Priority scenario</span>
+      <h2>From first report to measured impact</h2>
+      <p>One connected workflow replaces scattered messages and phone calls.</p>
+    </div>
+    <div class="flow">
+      <div><h3>Report</h3><p>A citizen flags a problem with a category, description, location and photos.</p><span class="tg ">Core · Report</span></div>
+      <div><h3>Review</h3><p>Administrators confirm the report and prioritize it.</p><span class="tg ">Core · Report</span></div>
+      <div><h3>Collect</h3><p>Agents are assigned, schedule pickups and update the task status.</p><span class="tg ">Core · Collection</span></div>
+      <div><h3>Recycle</h3><p>Recycling centers record the materials and quantities they receive.</p><span class="tg ">Core · Recycling</span></div>
+      <div><h3>Measure</h3><p>Dashboards update with waste collected, recycled and estimated CO₂ saved.</p><span class="tg s">Supporting · Impact</span></div>
+    </div>
+    <h3 class="sub-h dom-h">Core, supporting and generic</h3>
+    <p class="dom-p">Not every service carries the same weight. The core services deliver the priority scenario above, the supporting ones build on it, and the generic one is a shared building block.</p>
+    <div class="g3 dom">
+      <div class="dc"><span class="tg">Core</span><h3>The reason EcoCollect exists</h3><p>The path from a reported problem to recycled waste. If one of these fails, there is no product.</p><ul class="chips2"><li>Report</li><li>Collection</li><li>Recycling Center</li></ul></div>
+      <div class="dc"><span class="tg s">Supporting</span><h3>Keeps the loop going, and visible</h3><p>They add engagement and measurement around the core flow, and mostly react to its events.</p><ul class="chips2"><li>Campaign</li><li>Rewards and Eco-Points</li><li>Impact Analytics</li></ul></div>
+      <div class="dc"><span class="tg g">Generic</span><h3>Needed, but not what sets us apart</h3><p>A shared building block that any platform would have. In V1 it delivers in-app notifications.</p><ul class="chips2"><li>Notification</li></ul><p class="v2"><b>Planned for V2:</b> mailing, payment and UX improvements.</p></div>
     </div>
   </div>
 </section>
@@ -642,22 +768,7 @@ dialog[open]{display:flex;flex-direction:column}
     </div>
     <div class="g2" style="margin-top:20px">
       <div class="c"><h3>Risks we are watching</h3><ul><li>Six services must integrate through shared events and security.</li><li>Duplicate events could award points twice, so consumers must be idempotent.</li><li>If Recycling is down, Collection completes the task without a proposed center instead of failing.</li><li>CO₂ coefficients need a documented source.</li></ul></div>
-      <pre class="code">ecoCollect/
-├── Backend/
-│   ├── report-service/
-│   ├── collection-service/
-│   ├── recycling-service/
-│   ├── campaign-service/
-│   ├── reward-service/
-│   ├── impact-analytics-service/
-│   ├── notification-service/
-│   ├── api-gateway/
-│   ├── eureka-server/
-│   ├── config-server/
-│   └── docker-compose.yml
-├── Frontend/
-├── Documentation/
-└── README.md</pre>
+      <div class="c"><h3>Our GitHub repository</h3><p>Code, documentation and the project backlog all live in one repository. Open it to follow the work or browse the issues for each service.</p><div class="cta-row" style="margin-top:20px"><a class="btn" href="https://github.com/HibaDkhil/EcoCollect-4DASI2-Alpha" target="_blank" rel="noopener">View the repository ↗</a><a class="btn ghost" href="https://github.com/HibaDkhil/EcoCollect-4DASI2-Alpha/issues" target="_blank" rel="noopener">Repo issues ↗</a></div></div>
     </div>
   </div>
 </section>
@@ -671,7 +782,7 @@ dialog[open]{display:flex;flex-direction:column}
       <div class="cta-row" style="justify-content:center;position:relative">
         <a class="btn sun" href="#architecture">Architecture</a>
         <a class="btn sun" href="#contracts">Contracts</a>
-        <a class="btn sun" href="#plan">Plan</a>
+        <a class="btn sun" href="https://github.com/HibaDkhil/EcoCollect-4DASI2-Alpha/issues" target="_blank" rel="noopener">Plan</a>
       </div>
       <p class="thanks">Questions and feedback welcome.</p>
     </div>
@@ -831,6 +942,82 @@ document.getElementById('dgx').onclick=()=>dd.close();
 dd.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
 dd.addEventListener('click',e=>{if(e.target===dd)dd.close()});
 dd.addEventListener('close',()=>{if(opener)opener.focus()});
+})();
+</script>
+<script>
+(()=>{
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches,
+fine=matchMedia('(hover:hover) and (pointer:fine)').matches,
+$=(q,r=document)=>[...r.querySelectorAll(q)],inDlg=e=>e.closest('dialog');
+
+/* 1. scroll reveal with stagger, bars grow in */
+if(!calm&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  $('.head,.facts,.c,.f,.flow>div,.svc,.tabs,.panel,.pills,.cta-box').filter(e=>!inDlg(e)&&!e.closest('.hero')).forEach(e=>{
+    const sib=[...e.parentElement.children].filter(x=>x.matches('.c,.f,.svc,.flow>div'));
+    e.style.setProperty('--dl',Math.min(Math.max(sib.indexOf(e),0),6)*70+'ms');
+    e.classList.add('rv');io.observe(e);
+  });
+  $('.bars').forEach(b=>{b.classList.add('pre');[...b.children].forEach((x,i)=>x.style.transitionDelay=i*80+'ms');io.observe(b)});
+}
+
+/* 2. clickable report tracker in the hero card */
+const st=$('.mock .steps li'),chip=document.querySelector('.mock .chip'),lab=['Received','Under review','In progress','Recycling','Resolved'];
+let cs=Math.max(0,st.findIndex(l=>l.classList.contains('now')));
+const setS=i=>{cs=i;st.forEach((l,k)=>{l.classList.toggle('now',k===i);l.classList.toggle('todo',k>i)});
+  if(chip){chip.textContent=lab[i];chip.classList.toggle('ok',i===4);if(!calm)chip.animate([{transform:'scale(.8)'},{transform:'scale(1)'}],{duration:300,easing:'cubic-bezier(.3,1.8,.5,1)'})}};
+st.forEach((l,k)=>{l.tabIndex=0;l.setAttribute('role','button');
+  const go=()=>{setS(k===cs?k+1:k);l.classList.remove('pop');void l.offsetWidth;l.classList.add('pop')};
+  l.addEventListener('click',go);
+  l.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+});
+
+/* 3. ripple + leaf burst on buttons */
+const burst=(x,y)=>{if(calm)return;for(let i=0;i<9;i++){
+  const l=document.createElement('i');l.className='bl';l.textContent=['🍃','♻','🌿'][i%3];
+  l.style.left=x+'px';l.style.top=y+'px';document.body.append(l);
+  const a=Math.PI*2*i/9+Math.random()*.6,d=55+Math.random()*60;
+  l.animate([{transform:'translate(-50%,-50%) scale(.4)',opacity:1},
+    {transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d-30}px)) rotate(${Math.random()*360}deg) scale(1)`,opacity:0}],
+    {duration:800+Math.random()*300,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>l.remove();}};
+document.addEventListener('click',e=>{
+  const b=e.target.closest&&e.target.closest('.btn');if(!b)return;
+  const r=b.getBoundingClientRect(),x=e.detail?e.clientX:r.left+r.width/2,y=e.detail?e.clientY:r.top+r.height/2;
+  if(!calm){const d=document.createElement('span');d.className='rip';d.style.left=x-r.left+'px';d.style.top=y-r.top+'px';b.append(d);setTimeout(()=>d.remove(),650)}
+  burst(x,y);
+});
+
+/* 4. cursor-aware cards (tilt + glow) and magnetic buttons */
+if(fine&&!calm){
+  const SEL='.mock,.c,.f,.svc';
+  $(SEL).filter(e=>!inDlg(e)).forEach(e=>e.classList.add('tilt'));
+  document.addEventListener('pointermove',e=>{
+    const t=e.target.closest&&e.target.closest(SEL);
+    if(t&&!inDlg(t)){
+      t.classList.add('tilt');
+      const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height,m=r.width>520?2.5:6;
+      t.style.setProperty('--rx',((.5-y)*m).toFixed(2)+'deg');
+      t.style.setProperty('--ry',((x-.5)*m*1.3).toFixed(2)+'deg');
+      t.style.setProperty('--mx',(x*100).toFixed(1)+'%');
+      t.style.setProperty('--my',(y*100).toFixed(1)+'%');
+    }
+    const b=e.target.closest&&e.target.closest('.btn');
+    if(b){const r=b.getBoundingClientRect();
+      b.style.translate=((e.clientX-r.left-r.width/2)*.22).toFixed(1)+'px '+((e.clientY-r.top-r.height/2)*.3).toFixed(1)+'px';}
+  },{passive:true});
+  document.addEventListener('pointerout',e=>{
+    const b=e.target.closest&&e.target.closest('.btn');
+    if(b&&!b.contains(e.relatedTarget))b.style.translate='';
+  });
+}
+})();
+</script>
+<script>
+(()=>{
+if(!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+let q=0;
+addEventListener('pointermove',e=>{if(q)return;q=requestAnimationFrame(()=>{q=0;const d=document.documentElement.style;
+  d.setProperty('--px',(e.clientX/innerWidth*2-1).toFixed(3));d.setProperty('--py',(e.clientY/innerHeight*2-1).toFixed(3))})},{passive:true});
 })();
 </script>
 </body>
