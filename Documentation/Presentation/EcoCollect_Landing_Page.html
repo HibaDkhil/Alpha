@@ -167,6 +167,8 @@ footer .logo i{width:28px;height:28px;font-size:15px;border-radius:8px}
 .tw th,.tw td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
 .tw th{background:var(--mint);color:var(--green-d);font-weight:600}
 .tw tr:last-child td{border:0}
+.tw .ev td.pg{font-weight:600;color:var(--green-d);border-right:1px solid var(--line);border-bottom:0}
+.tw .ev tr.gs:not(:first-child) td{border-top:1px solid var(--line)}
 code{font:13.5px ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--bg);padding:2px 7px;border-radius:6px}
 pre.code{background:var(--ink);color:#d3ecde;border-radius:18px;padding:22px;overflow:auto;font:13.5px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;margin:0}
 .diagram{background:var(--bg);border:1px solid var(--line);border-radius:24px;padding:30px}
@@ -694,18 +696,8 @@ section.how:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events
     <div class="head">
       <span class="part">4 · Contracts</span>
       <h2>Clear endpoints, clear events</h2>
-      <p>Every service documents its API with OpenAPI (Swagger). The examples below are the planned starting point.</p>
+      <p>Every service documents its API with OpenAPI (Swagger); the full endpoint list of each one is in its card above. What matters here is how services talk to each other: two styles, each used where it fits.</p>
     </div>
-    <div class="tw"><table><thead><tr><th>Service</th><th>Main endpoints</th><th>What you can do</th></tr></thead><tbody>
-      <tr><td>Reports</td><td><code>POST /api/reports</code> <code>GET /api/reports/{id}</code></td><td>Create, list, inspect, update status, add photos</td></tr>
-      <tr><td>Collections</td><td><code>POST /api/collections/requests</code> <code>PUT /api/collections/tasks/{id}/assign</code></td><td>Request, assign, start, complete</td></tr>
-      <tr><td>Recycling</td><td><code>GET /api/recycling/centers/nearby</code> <code>POST /api/recycling/records</code></td><td>Manage centers, materials, deposits</td></tr>
-      <tr><td>Campaigns</td><td><code>POST /api/campaigns/{id}/join</code></td><td>Create, join, complete, add activities</td></tr>
-      <tr><td>Rewards</td><td><code>GET /api/rewards/points/{userId}</code> <code>GET /api/rewards/leaderboard</code></td><td>Balance, history, badges, redeem</td></tr>
-      <tr><td>Impact</td><td><code>GET /api/impact/summary</code> <code>GET /api/impact/co2-saved</code></td><td>Waste, recycling, CO₂ estimate, by place and period</td></tr>
-      <tr><td>Notifications</td><td><code>GET /api/notifications/{userId}</code> <code>PUT /api/notifications/{id}/read</code></td><td>List, mark as read, preferences</td></tr>
-    </tbody></table></div>
-
     <h3 class="sub-h">REST for answers, events for reactions</h3>
     <div class="g2">
       <div class="c"><h3>Synchronous · REST</h3><ul><li>The frontend calls services through the gateway.</li><li>Collection asks Recycling for nearby centers that accept a material.</li><li>Services find each other through Eureka.</li></ul></div>
@@ -726,7 +718,7 @@ section.how:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events
 <dialog id="dgdlg" aria-labelledby="dgtitle"><div class="dh"><div><h3 id="dgtitle"></h3><p id="dgsub"></p></div><button type="button" class="x" id="dgx">Close</button></div>
 <nav class="dtabs" aria-label="Diagrams"><button type="button" data-d="0">Architecture</button><button type="button" data-d="1">Class diagram</button><button type="button" data-d="2">Synchronous path</button><button type="button" data-d="3">Asynchronous path</button><button type="button" data-d="4">Keycloak security</button></nav>
 <div class="db" id="dgbody"></div><div class="dgnav"><button type="button" id="dgp"></button><button type="button" id="dgn"></button></div></dialog>
-<h3 class="sub-h">Event catalog</h3><div class="tw"><table><thead><tr><th>Event</th><th>Routing key</th><th>Producer</th><th>Consumers</th></tr></thead><tbody><tr><td><code>ReportCreated</code></td><td><code>report.created</code></td><td>Report</td><td>Impact, Notifications</td></tr><tr><td><code>ReportValidated</code></td><td><code>report.validated</code></td><td>Report</td><td>Collection, Impact, Notifications</td></tr><tr><td><code>ReportStatusChanged</code></td><td><code>report.status-changed</code></td><td>Report</td><td>Impact, Notifications</td></tr><tr><td><code>CollectionAssigned</code></td><td><code>collection.assigned</code></td><td>Collection</td><td>Notifications</td></tr><tr><td><code>CollectionCompleted</code></td><td><code>collection.completed</code></td><td>Collection</td><td>Rewards, Impact, Notifications</td></tr><tr><td><code>WasteRecycled</code></td><td><code>waste.recycled</code></td><td>Recycling</td><td>Rewards, Impact, Notifications</td></tr><tr><td><code>CampaignCreated</code></td><td><code>campaign.created</code></td><td>Campaign</td><td>Notifications</td></tr><tr><td><code>CampaignParticipationCompleted</code></td><td><code>campaign.participation-completed</code></td><td>Campaign</td><td>Rewards, Impact, Notifications</td></tr><tr><td><code>RewardGranted</code></td><td><code>reward.granted</code></td><td>Rewards</td><td>Notifications</td></tr><tr><td><code>BadgeUnlocked</code></td><td><code>badge.unlocked</code></td><td>Rewards</td><td>Notifications</td></tr></tbody></table></div><p style="font-size:14px;color:var(--muted);margin-top:12px">Delivery is at-least-once, so consumers must tolerate duplicates. The <code>eventId</code> is the idempotency key, especially for point awards. The message format is in the asynchronous diagram.</p>
+<h3 class="sub-h">Event catalog</h3><div class="tw"><table class="ev"><thead><tr><th>Producer</th><th>Event</th><th>Consumers</th></tr></thead><tbody><tr class="gs"><td class="pg" rowspan="3">Report</td><td><code>ReportCreated</code></td><td>Impact, Notifications</td></tr><tr><td><code>ReportValidated</code></td><td>Collection, Impact, Notifications</td></tr><tr><td><code>ReportStatusChanged</code></td><td>Impact, Notifications</td></tr><tr class="gs"><td class="pg" rowspan="2">Collection</td><td><code>CollectionAssigned</code></td><td>Notifications</td></tr><tr><td><code>CollectionCompleted</code></td><td>Rewards, Impact, Notifications</td></tr><tr class="gs"><td class="pg" rowspan="1">Recycling</td><td><code>WasteRecycled</code></td><td>Rewards, Impact, Notifications</td></tr><tr class="gs"><td class="pg" rowspan="2">Campaign</td><td><code>CampaignCreated</code></td><td>Notifications</td></tr><tr><td><code>CampaignParticipationCompleted</code></td><td>Rewards, Impact, Notifications</td></tr><tr class="gs"><td class="pg" rowspan="2">Rewards</td><td><code>RewardGranted</code></td><td>Notifications</td></tr><tr><td><code>BadgeUnlocked</code></td><td>Notifications</td></tr></tbody></table></div><p style="font-size:14px;color:var(--muted);margin-top:12px">Delivery is at-least-once, so consumers must tolerate duplicates. The <code>eventId</code> is the idempotency key, especially for point awards. The message format is in the asynchronous diagram.</p>
   </div>
 </section>
 
